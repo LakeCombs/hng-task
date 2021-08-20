@@ -33,29 +33,14 @@ const getOnePersona = async (req, res) => {
 };
 
 const addPersona = async (req, res) => {
-  // const newPersona = {
-  //   title: req.body.title,
-  //   name: req.body.name,
-  //   age: req.body.age,
-  //   email: req.body.email,
-  //   maritalStatus: req.body.maritalStatus,
-  //   educationLevel: req.body.educationalLevel,
-  //   occpationalStatus: req.body.occpationalStatus,
-  //   sex: req.body.sex,
-  //   background: req.body.background,
-  //   goal: req.body.goal,
-  //   Professional: req.body.Professional,
-  // };
-
   try {
-    const postPersona = await persona.create({
-      name: req.body.name,
-      email: req.body.email,
+    const newData = await persona.create(req.body);
+    res.status(200).json({
+      msg: "created successfully",
+      data: newData,
     });
-
-    res.status(200).json(postPersona);
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error.message });
   }
 };
 
