@@ -1,43 +1,46 @@
 const mongoose = require("mongoose");
 
 const personaSchema = new mongoose.Schema({
-  title: {
-    type: String,
-  },
+  // title: {
+  //   type: String,
+  // },
 
-  name: {
-    type: String,
-  },
+  // name: {
+  //   type: String,
+  // },
 
-  age: {
-    type: Number,
-  },
+  // age: {
+  //   type: Number,
+  // },
 
-  email: {
-    type: String,
-  },
+  // email: {
+  //   type: String,
+  // },
 
-  maritalStatus: {
-    type: String,
-  },
+  // maritalStatus: {
+  //   type: String,
+  // },
 
-  educationLevel: {
-    type: String,
-  },
+  // educationLevel: {
+  //   type: String,
+  // },
 
-  occpationalStatus: {
-    type: String,
-  },
+  // occpationalStatus: {
+  //   type: String,
+  // },
 
-  background: {
-    type: String,
-  },
-  goal: {
-    type: String,
-  },
-  Professional: {
-    type: String,
-  },
+  // background: {
+  //   type: String,
+  // },
+  // goal: {
+  //   type: String,
+  // },
+  // Professional: {
+  //   type: String,
+  // },
+
+  name: String,
+  email: String,
 });
 
 module.exports = mongoose.model("persona", personaSchema);

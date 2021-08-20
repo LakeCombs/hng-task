@@ -33,23 +33,45 @@ const getOnePersona = async (req, res) => {
 };
 
 const addPersona = async (req, res) => {
-  const newPersona = {
-    title: req.body.title,
-    name: req.body.name,
-    age: req.body.age,
-    email: req.body.email,
-    maritalStatus: req.body.maritalStatus,
-    educationLevel: req.body.educationalLevel,
-    occpationalStatus: req.body.occpationalStatus,
-    sex: req.body.sex,
-    background: req.body.background,
-    goal: req.body.goal,
-    Professional: req.body.Professional,
-  };
+  // const newPersona = {
+  //   title: req.body.title,
+  //   name: req.body.name,
+  //   age: req.body.age,
+  //   email: req.body.email,
+  //   maritalStatus: req.body.maritalStatus,
+  //   educationLevel: req.body.educationalLevel,
+  //   occpationalStatus: req.body.occpationalStatus,
+  //   sex: req.body.sex,
+  //   background: req.body.background,
+  //   goal: req.body.goal,
+  //   Professional: req.body.Professional,
+  // };
 
   try {
-    const postPersona = await persona.create(newPersona);
+    const postPersona = await persona.create({
+      name: req.body.name,
+      email: req.body.email,
+    });
+
     res.status(200).json(postPersona);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+};
+
+const deleteAllResume = async (req, res) => {
+  try {
+    const deleteAll = await persona.deleteMany();
+    res.status(200).json(deleteAll);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+};
+
+const deleteOne = async (req, res) => {
+  try {
+    const deleteSingle = await persona.findByIdAndDelete(req.params.id);
+    res.status(200).json(deleteSingle);
   } catch (error) {
     res.status(500).json({ error: error });
   }
@@ -60,4 +82,6 @@ module.exports = {
   addPersona,
   getAllPersona,
   getOnePersona,
+  deleteAllResume,
+  deleteOne,
 };

@@ -11,7 +11,7 @@ connectDB();
 const PORT = process.env.PORT || 3445;
 app.use(cors());
 app.use(express.json());
-app.use("/api", router);
+app.use("/", router);
 
 const server = app.listen(PORT, () => {
   console.log(`server is listening to port ${PORT}`);
